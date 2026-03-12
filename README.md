@@ -83,7 +83,7 @@ The efficient frontier is traced by solving:
 
 $$\min_w \ w^T \Sigma w \quad \text{s.t.} \quad w^T \mu = R_{\text{target}}, \quad \sum w_i = 1$$
 
-See [`docs/fiche_projet.pdf`](docs/Portfolio_Optimization_Markowitz.pdf) for the full mathematical write-up.
+See [`docs/Portfolio_Optimization_Markowitz.pdf`](docs/Portfolio_Optimization_Markowitz.pdf) for the full mathematical write-up.
 
 ---
 
