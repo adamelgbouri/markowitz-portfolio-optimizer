@@ -90,3 +90,7 @@ See [`docs/Portfolio_Optimization_Markowitz.pdf`](docs/Portfolio_Optimization_Ma
 ## License
 
 MIT — © 2026 Adam El Gbouri
+
+---
+
+*Built with Python · Yahoo Finance*
