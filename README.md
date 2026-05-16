@@ -1,73 +1,47 @@
 # Portfolio Optimizer ™ by AEG
 
-A complete portfolio optimization tool in Python based on the **Markowitz Modern Portfolio Theory**.  
-Select financial assets, retrieve historical data, simulate thousands of portfolios and find the optimal allocation.
+A complete portfolio optimization web app based on the **Markowitz Modern Portfolio Theory**.  
+Search and select assets from a database of 47 000+ instruments, simulate thousands of portfolios, and find the optimal allocation — all in an interactive dashboard.
+
+---
+
+## Live App
+
+**[aeg-markowitz.streamlit.app](https://aeg-markowitz.streamlit.app)**
+
+---
 
 ![Dashboard example](docs/portfolio_result.png)
 
 ---
 
+
 ## Features
 
-- Interactive GUI to search and select assets (equities, ETFs, indices, crypto, currencies)
+- Search & select assets from 47 000+ instruments (equities, ETFs, indices, crypto, currencies) via `financedatabase`
 - Historical data download via Yahoo Finance
 - Monte Carlo simulation of 8 000 random portfolios
-- Efficient Frontier computation
-- Tangent Portfolio (max Sharpe) and Minimum Variance Portfolio
-- Full graphical dashboard exported as PNG
+- Efficient Frontier & Capital Market Line
+- Tangent Portfolio (Max Sharpe) and Minimum Variance Portfolio
+- **Budget allocation** — distributes your investment across assets with optimal weights
+- **Live prices** — real-time market prices with EUR/USD conversion, number of shares, and performance vs backtest end date
+- Interactive Plotly charts (zoom, hover, export)
+- Correlation heatmap, rolling Sharpe ratio, drawdown analysis
+- Portfolio comparison (Tangent vs Min Variance) with CAGR & Max Drawdown
+- Full CSV export of results and weights
 
 ---
 
-## Installation
+## Dashboard Tabs
 
-```bash
-git clone https://github.com/your-username/portfolio-optimizer.git
-cd portfolio-optimizer
-pip install -r requirements.txt
-```
-
----
-
-## Usage
-
-```bash
-python3 portfolio_optimizer.py
-```
-
-1. Search and add at least 2 assets in the GUI
-2. Set the analysis period and risk-free rate
-3. Click **RUN ANALYSIS**
-4. The dashboard is saved as `portfolio_result.png`
-
----
-
-## Project Structure
-
-```
-portfolio-optimizer/
-├── portfolio_optimizer.py   # Main script
-├── requirements.txt
-├── README.md
-├── .gitignore
-├── LICENSE
-└── docs/
-    ├── fiche_projet.pdf     # Project report
-    └── fiche_projet.tex
-```
-
----
-
-## Dependencies
-
-| Library | Purpose |
-|---|---|
-| `numpy` | Matrix algebra |
-| `pandas` | Time series handling |
-| `scipy` | SLSQP optimization |
-| `matplotlib` | Dashboard visualization |
-| `yfinance` | Market data download |
-| `financedatabase` | Asset catalog |
-| `tkinter` | Graphical interface |
+| Tab | Content |
+|-----|---------|
+| 📊 Frontier | Efficient frontier, CML, Monte Carlo cloud, individual assets |
+| 📈 Prix & Drawdown | Normalized prices & drawdown per asset |
+| 🥧 Allocations | Pie charts + cumulative performance |
+| 🔬 Risque | Individual Sharpe bars, correlation matrix, rolling Sharpe |
+| 💰 Budget & Live | Budget allocation table, live prices, Δ vs backtest |
+| 📋 Résumé | Portfolio comparison, statistics, CSV export |
 
 ---
 
@@ -83,7 +57,23 @@ The efficient frontier is traced by solving:
 
 $$\min_w \ w^T \Sigma w \quad \text{s.t.} \quad w^T \mu = R_{\text{target}}, \quad \sum w_i = 1$$
 
+The Tangent Portfolio is found via multi-start SLSQP optimization (50 random initializations) maximizing the Sharpe ratio.
+
 See [`docs/Portfolio_Optimization_Markowitz.pdf`](docs/Portfolio_Optimization_Markowitz.pdf) for the full mathematical write-up.
+
+---
+
+## Dependencies
+
+| Library | Purpose |
+|---------|---------|
+| `streamlit` | Web app framework |
+| `plotly` | Interactive charts |
+| `numpy` | Matrix algebra |
+| `pandas` | Time series handling |
+| `scipy` | SLSQP optimization |
+| `yfinance` | Market data & live prices |
+| `financedatabase` | 47 000+ asset catalog |
 
 ---
 
@@ -93,4 +83,5 @@ MIT — © 2026 Adam El Gbouri
 
 ---
 
-*Built with Python · Yahoo Finance*
+*Built with Python · Streamlit · Yahoo Finance · Plotly*
+
